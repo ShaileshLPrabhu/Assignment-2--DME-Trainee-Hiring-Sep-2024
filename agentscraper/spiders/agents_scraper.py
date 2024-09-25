@@ -29,7 +29,7 @@ class BhSpider(scrapy.Spider):
 
         self.save_data(data)
     
-    #saving data to json and csv
+    #saving data to json & csv
     def save_data(self, data):
         with open('agents.json', 'a') as json_file:
             json.dump(data, json_file)
