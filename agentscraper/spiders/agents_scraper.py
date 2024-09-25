@@ -1,13 +1,14 @@
 import scrapy
-import json
 import csv
+import json
+
 
 class BhSpider(scrapy.Spider):
     name = 'agentscraper'
     start_urls = ['https://www.bhhsamb.com/roster/Agents']
     
     def parse(self, response):
-        # Extracting profile links of each agen
+        # Extracting profile links of each agent
         profile_links = response.xpath('/html/body/div[1]/section/div[6]/article[1]/a/@href').getall()
         for url in profile_links:
             yield response.follow(url,self.parse_agent)
